@@ -1,6 +1,13 @@
 // We geather all buttons and add event listeners to them
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.getElementsByTagName('button');
+
+    document.getElementById('answer-box').addEventListener('keydown', function (event) {
+        if (event.key === ' ' || event.key === 'Space' || event.key === 'Enter') {
+            checkAnswer();
+        }
+    })
+
     for (let button of buttons) {
         button.addEventListener('click', function () {
             if (this.getAttribute('data-type') === 'submit') {
@@ -11,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
-    runGame('addition')
+    runGame('addition');
 })
 
 /**
@@ -83,7 +90,6 @@ function calculateCorrectAnswer() {
         alert(`Invalid operation`);
         throw `Invalid operation. Aborting...`
     }
-
 }
 
 function incrementScore() {
